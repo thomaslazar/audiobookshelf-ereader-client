@@ -1,0 +1,21 @@
+@page
+@model IndexModel
+<h2>Libraries</h2>
+<form method="get">
+    <select name="selectedLibraryId" onchange="this.form.submit()">
+        @foreach (var library in Model.Libraries)
+        {
+            <option value="@library.Id" @(library.Id == Model.SelectedLibraryId ? "selected" : "")>
+                @library.Name
+            </option>
+        }
+    </select>
+</form>
+<h2>Library Items</h2>
+@foreach (var item in Model.Items)
+{
+    <div>
+        <p>@item.Title</p>
+        <a href="/Details/@item.Id">Details</a>
+    </div>
+}
